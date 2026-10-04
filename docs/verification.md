@@ -22,6 +22,8 @@ build/startup and Railway deployment must be verified separately.
 - Started the service as non-root UID 10001; /healthz returned status=ok after
   bundled-resource checks and Java signer startup.
 - Desktop remote-mode probe retrieved all 99/99 models through the Linux API.
+- Downloaded episode 1 through the Linux metadata API to the desktop and passed
+  decryption/remux/full audio+video decode in 11.70 seconds.
 - A one-time idle memory observation after the probe was about 152 MiB for the
   container. This is not a peak/load measurement or a guarantee for Railway Free.
 - Expanded desktop regression run: 164 tests passed. An earlier command used a
