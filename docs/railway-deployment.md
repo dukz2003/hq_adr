@@ -38,8 +38,10 @@ server lỗi. Link có series_id hoặc ID số được hỗ trợ; share link 
 
 Thư mục test cloud: `D:\phuduc\test_hq_dl\test-output\railway-hongguo`.
 Báo cáo CLI: `D:\phuduc\test_hq_dl\test-output\railway-download-report.json`.
-Kết quả tải thực tế được ghi ở `docs/verification.md` khi chạy xong; không suy
-ra tải thành công chỉ từ healthcheck/model availability.
+Kết quả thực tế: đã tải mới và xác minh đủ 99/99 tập, 590.38 giây, 1080x1920
+HEVC/AAC, 720930792 bytes, 99 SHA-256 khác nhau. Chạy lại nhận 99 file hợp lệ,
+không tải mới, 3.94 giây. Tập 1 và 99 qua full decode độc lập lần nữa.
+Chi tiết ở `docs/verification.md`; không suy ra tải thành công chỉ từ healthcheck.
 
 ## Những giới hạn trước khi phát hành EXE
 
