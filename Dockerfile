@@ -8,7 +8,9 @@ ENV JAVA_HOME=/opt/java/openjdk \
     HQ_DATA_DIR=/app/data
 WORKDIR /app
 COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt \
+RUN apt-get update && apt-get install -y --no-install-recommends libstdc++6 ca-certificates \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip install --no-cache-dir -r requirements.txt \
     && useradd --uid 10001 --create-home hq \
     && mkdir /app/data && chown hq:hq /app/data
 COPY --chown=hq:hq hq_service ./hq_service
