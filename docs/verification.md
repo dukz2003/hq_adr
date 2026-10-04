@@ -16,4 +16,20 @@ These are local API tests, not Railway deployment results. They do not demonstra
 that a Railway IP is accepted or that cross-IP CDN downloads work. Linux Docker
 build/startup and Railway deployment must be verified separately.
 
+## Linux Docker verification on the development host
+
+- Built the Docker image successfully for Linux x86_64 with Java 21.
+- Started the service as non-root UID 10001; /healthz returned status=ok after
+  bundled-resource checks and Java signer startup.
+- Desktop remote-mode probe retrieved all 99/99 models through the Linux API.
+- A one-time idle memory observation after the probe was about 152 MiB for the
+  container. This is not a peak/load measurement or a guarantee for Railway Free.
+- Expanded desktop regression run: 164 tests passed. An earlier command used a
+  nonexistent test module name; rerunning with test_media_error_handling succeeded.
+
+GitHub repository is now public (changed by the owner). Railway accepted its full
+URL and created project 6283028e-ed47-43be-90ad-f871916aa03a, service hq_adr.
+Credential/guest-variable configuration and actual cloud acceptance/download
+tests are still pending; repository discovery is not deployment success.
+
 No token, guest identity, content keys or CDN URLs are recorded here.
