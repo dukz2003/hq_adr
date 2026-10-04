@@ -1,3 +1,5 @@
+# Legacy Railway Config-as-Code only. New services must set these in the UI/IaC.
+# See README; this file is NOT proof a new deployment applied these settings.
 [build]
 builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"

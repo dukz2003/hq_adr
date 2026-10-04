@@ -25,12 +25,15 @@ No video storage/proxy, paid signing API, Android app or TTS/STT dependencies.
 
 ## Railway
 
-1. Deploy this repository as a service; `Dockerfile` and `railway.toml` are included.
+1. Deploy this repository as a service; `Dockerfile` is auto-detected.
+   Railway now deprecates Config-as-Code for new services; do not rely on
+   `railway.toml` to configure a newly created service. In the dashboard set
+   healthcheck `/healthz`, timeout 120 seconds and On Failure max retries 3.
 2. Configure `HQ_API_TOKEN` in Railway Variables, never in Git.
 3. Configure all three `HQ_DEVICE_ID`, `HQ_IID`, `HQ_CDID` from a single stable
    private guest profile. Railway ephemeral disks otherwise lose the profile on
    redeploy. Do not change identity on rate limits. Do not publish these values.
-4. Generate an HTTPS Railway domain on the service's assigned `PORT`.
+4. Set `PORT=8080` and generate an HTTPS Railway domain targeting port 8080.
 5. Health check `/healthz` only becomes ready after Java/assets pass startup checks.
    It does not prove Hongguo accepts the host's IP or the returned CDN URLs.
 6. Set desktop `.env`:
@@ -46,6 +49,11 @@ No video storage/proxy, paid signing API, Android app or TTS/STT dependencies.
    containing `series_id` (short share links are not supported in remote mode).
 8. Test ALL episode models and a real download from the desktop's different IP.
    CDN links expire; retry requests refreshed models. Do not save keys/URLs in reports.
+
+When deploying a public repository from an owner other than the connected GitHub
+account, Railway may show "Auto deploy unavailable". A Git push alone is then
+not proof the service updated: use the upstream update controls and verify the
+running deployment. Do not broaden GitHub App permissions without approval.
 
 Railway Trial/Free has credit, RAM and possibly outbound-network limits. Do not
 upgrade without the owner's approval. Java heap is capped at 384 MiB; actual
